@@ -1,12 +1,11 @@
 function Task(props) {
-    return <li>{props.name}, {props.dueDate.toLocaleTimeString()},<button onClick={() => {props.delete_Task(props.taskId) }}>Delete</button></li>
+    return <li><input type = "radio" ></input> {props.name}, {props.dueDate.toLocaleTimeString()},{props.date.toLocaleString()}, <button onClick={() => {props.delete_Task(props.taskId) }}>Delete</button></li>
 }
 
 class TodoList extends React.Component {
     constructor(props) {
         super(props);
         this.state = {list: props.list};
-
         this.handleAddTask = this.handleAddTask.bind(this);
         this.deleteTask = this.deleteTask.bind(this);
 
@@ -28,7 +27,7 @@ class TodoList extends React.Component {
                 <ol>
                     {
                         this.state.list.map((t) =>
-                            <Task key={t.id} name={t.name} dueDate={t.dueDate} delete_Task = {this.deleteTask} taskId = {t.id}/>)
+                            <Task key={t.id} name={t.name} dueDate={t.dueDate} date ={t.date} delete_Task = {this.deleteTask} taskId = {t.id}/>)
                     }
                 </ol>
                 <TaskNameForm onAddTask={this.handleAddTask} />
